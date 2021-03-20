@@ -23,6 +23,7 @@
 <script>
     const VACCINATION_TARGET = 10280000; // +- Population of Portugal
     const HERD_IMMUNITY_PERCENTAGE = 0.7; // 70%
+    const TWO_DOSE_VACCINATIONS = 432894;
 
     function parseCSV(str) {
         var arr = [];
@@ -110,6 +111,8 @@
         Grading Lookup
         */
         function lookUpGrade(lookupScore, grades) {
+            console.log(lookupScore);
+            console.log(grades);
             // Only change code below this line
             for (var i = 0; i < grades.length; i++) {
               if (
@@ -162,6 +165,7 @@
         axis2.renderer.labels.template.bent = true;
         axis2.renderer.labels.template.fill = am4core.color("#000");
         axis2.renderer.labels.template.fontWeight = "bold";
+        axis2.renderer.labels.template.fontSize = "1.5em";
         axis2.renderer.labels.template.fillOpacity = 0.8;
 
         /**
@@ -235,6 +239,15 @@
             label.fill = am4core.color(matchingGrade.color);
         })
 
+        setTimeout(() => {
+            hand.showValue(
+                (TWO_DOSE_VACCINATIONS / VACCINATION_TARGET) * 100.0, 
+                1000, 
+                am4core.ease.cubicOut
+            );
+        }, 500);
+
+
         /*
         setInterval(function() {
           var value = chartMin + Math.random() * (chartMax - chartMin);
@@ -242,8 +255,10 @@
         }, 2000);
         */
 
+        /*
         $.ajax({
             url: 'https://github.com/dssg-pt/covid19pt-data/blob/master/vacinas.csv',
+            headers: {  "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept" },
             crossDomain: true,
             dataType: 'text',
         }).done(function(data) {
@@ -257,6 +272,7 @@
         }).fail(function() {
             alert( "error" );
         });
+        */
 
         /*
         $("#filename").change(function(e) {
@@ -271,6 +287,7 @@
                     var data = e.target.result;
                     var csv = parseCSV(data);
                     var vaccinations = getTwoDoseVaccinations(csv);
+                    console.log(vaccinations);
                     hand.showValue(
                         (vaccinations / VACCINATION_TARGET) * 100.0, 
                         1000, 
@@ -282,6 +299,7 @@
             return false;
         });
         */
+        
 
     }); // end am4core.ready()
 </script>

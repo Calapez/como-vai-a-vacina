@@ -243,23 +243,6 @@
             label.fill = am4core.color(matchingGrade.color);
         })
 
-        /*
-        setTimeout(() => {
-            hand.showValue(
-                (TWO_DOSE_VACCINATIONS / VACCINATION_TARGET) * 100.0, 
-                1000, 
-                am4core.ease.cubicOut
-            );
-        }, 500);
-        */
-
-        /*
-        setInterval(function() {
-          var value = chartMin + Math.random() * (chartMax - chartMin);
-          hand.showValue(value, 1000, am4core.ease.cubicOut);
-        }, 2000);
-        */
-
         $.ajax({
             url: 'https://raw.githubusercontent.com/dssg-pt/covid19pt-data/master/vacinas.csv',
             crossDomain: true,
@@ -267,49 +250,22 @@
         }).done(function(data) {
             var csv = parseCSV(data);
             var vaccinations = getTwoDoseVaccinations(csv);
-            hand.showValue(
-                (vaccinations / VACCINATION_TARGET) * 100.0, 
-                1000, 
-                am4core.ease.cubicOut
-            );
+            setTimeout(() => {
+                hand.showValue(
+                    (vaccinations / VACCINATION_TARGET) * 100.0, 
+                    1000, 
+                    am4core.ease.cubicOut
+                );
+            }, 500);
         }).fail(function() {
             alert( "error" );
         });
-
-        /*
-        $("#filename").change(function(e) {
-            var ext = $("input#filename").val().split(".").pop().toLowerCase();
-            if($.inArray(ext, ["csv"]) == -1) {
-                alert('Upload CSV');
-                return false;
-            } 
-            if (e.target.files != undefined) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    var data = e.target.result;
-                    var csv = parseCSV(data);
-                    var vaccinations = getTwoDoseVaccinations(csv);
-                    console.log(vaccinations);
-                    hand.showValue(
-                        (vaccinations / VACCINATION_TARGET) * 100.0, 
-                        1000, 
-                        am4core.ease.cubicOut
-                    );
-                };
-                reader.readAsText(e.target.files.item(0));
-            }
-            return false;
-        });
-        */
         
 
     }); // end am4core.ready()
 </script>
 
 <!-- HTML -->
-<!--
-<input type="file" name="filename" id="filename">
--->
  <div />
 <div class="container">
     <div id="header" class="row" style="color:#000000; padding-top: 0.5em; padding-bottom: 1em;">

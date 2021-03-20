@@ -262,7 +262,6 @@
 
         $.ajax({
             url: 'https://raw.githubusercontent.com/dssg-pt/covid19pt-data/master/vacinas.csv',
-            headers: {  "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept" },
             crossDomain: true,
             dataType: 'text',
         }).done(function(data) {

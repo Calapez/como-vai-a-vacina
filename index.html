@@ -28,7 +28,6 @@
 <script>
     const VACCINATION_TARGET = 10155650; // +- Population of Portugal
     const HERD_IMMUNITY_PERCENTAGE = 0.7; // 70%
-    const TWO_DOSE_VACCINATIONS = 432894;
 
     function parseCSV(str) {
         var arr = [];
@@ -244,6 +243,7 @@
             label.fill = am4core.color(matchingGrade.color);
         })
 
+        /*
         setTimeout(() => {
             hand.showValue(
                 (TWO_DOSE_VACCINATIONS / VACCINATION_TARGET) * 100.0, 
@@ -251,7 +251,7 @@
                 am4core.ease.cubicOut
             );
         }, 500);
-
+        */
 
         /*
         setInterval(function() {
@@ -260,9 +260,8 @@
         }, 2000);
         */
 
-        /*
         $.ajax({
-            url: 'https://github.com/dssg-pt/covid19pt-data/blob/master/vacinas.csv',
+            url: 'https://raw.githubusercontent.com/dssg-pt/covid19pt-data/master/vacinas.csv',
             headers: {  "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept" },
             crossDomain: true,
             dataType: 'text',
@@ -277,7 +276,6 @@
         }).fail(function() {
             alert( "error" );
         });
-        */
 
         /*
         $("#filename").change(function(e) {

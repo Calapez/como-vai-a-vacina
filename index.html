@@ -68,7 +68,7 @@
     }
 
     function getTwoDoseVaccinations(csv) {
-        return parseInt(csv[csv.length - 1][5]);
+        return parseInt(csv.slice().reverse().find(elem => elem[7] !== "")[7]);
     }
 
     am4core.ready(function() {

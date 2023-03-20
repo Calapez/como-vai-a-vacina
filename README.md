@@ -1,4 +1,4 @@
-<h1 align="center"> Como vai a vacina? </h1>
+<h1 align="center">Como vai a vacina?</h1>
 <h3 align="center">https://calapez.github.io/como-vai-a-vacina/</h3>
 
 
